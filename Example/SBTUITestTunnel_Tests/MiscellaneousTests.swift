@@ -71,18 +71,6 @@ class MiscellaneousTests: XCTestCase {
         XCTAssertEqual("123", retObj3 as! String)
     }
     
-    func testTakeOffWait() {
-        app.launchArguments = ["wait_for_startup_test"]
-        
-        var start = Date.distantFuture
-        app.launchTunnel(withOptions: [SBTUITunneledApplicationLaunchOptionResetFilesystem]) {
-            start = Date()
-        }
-        
-        let delta = start.timeIntervalSinceNow
-        XCTAssert(delta < -5.0)
-    }
-    
     func testStubWithFilename() {
         app.launchTunnel(withOptions: [SBTUITunneledApplicationLaunchOptionResetFilesystem])
         
@@ -150,8 +138,19 @@ class MiscellaneousTests: XCTestCase {
         
         app.scrollTableView(withIdentifier: "table", toRow: 100, animated: false)
         
-        expectation(for: NSPredicate(format: "isHittable == true"), evaluatedWith: app.staticTexts["Label5"])
-        waitForExpectations(timeout: 15.0, handler: nil)
+        XCTAssert(app.staticTexts["Label5"].isHittable)
+    }
+    
+    func testTableViewScrolling2() {
+        app.launchTunnel()
+        
+        app.cells["showExtensionTable2"].tap()
+        
+        XCTAssertFalse(app.staticTexts["80"].isHittable)
+        
+        app.scrollTableView(withIdentifier: "table", toElementWithIdentifier: "80", animated: true)
+                
+        XCTAssert(app.staticTexts["80"].isHittable)
     }
     
     func testScrollViewScrolling() {
@@ -161,10 +160,7 @@ class MiscellaneousTests: XCTestCase {
         
         XCTAssertFalse(app.buttons["Button"].isHittable)
         
-        app.scrollScrollView(withIdentifier: "scrollView", toElementWitIdentifier: "Button", animated: true)
-        
-        expectation(for: NSPredicate(format: "exists == true"), evaluatedWith: app.buttons["Button"])
-        waitForExpectations(timeout: 15.0, handler: nil)
+        app.scrollScrollView(withIdentifier: "scrollView", toElementWithIdentifier: "Button", animated: true)
         
         XCTAssert(app.buttons["Button"].isHittable)
     }
