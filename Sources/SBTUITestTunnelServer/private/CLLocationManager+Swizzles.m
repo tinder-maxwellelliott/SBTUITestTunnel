@@ -26,10 +26,10 @@
 
 #if ENABLE_UITUNNEL && ENABLE_UITUNNEL_SWIZZLING
 
-@import SBTUITestTunnelCommon;
 @import CoreLocation;
 
-#import "CLLocationManager+Swizzles.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/private/CLLocationManager+Swizzles.h"
 
 static NSMapTable *_instanceHashTable;
 static NSMapTable *_delegatesHashTable;
@@ -138,7 +138,7 @@ static NSString *_serviceStatus;
 {
     _instanceHashTable = hashTable;
     _delegatesHashTable = [hashTable copy];
-    
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         SBTTestTunnelInstanceSwizzle(self.class, @selector(startMonitoring), @selector(swz_startMonitoring));
@@ -151,12 +151,12 @@ static NSString *_serviceStatus;
         SBTTestTunnelInstanceSwizzle(self.class, @selector(requestAlwaysAuthorization), @selector(swz_requestAlwaysAuthorization));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(requestWhenInUseAuthorization), @selector(swz_requestWhenInUseAuthorization));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(setDelegate:), @selector(swz_setDelegate:));
-        
-        SBTTestTunnelInstanceSwizzle(self.class, @selector(authorizationStatus), @selector(swz_authorizationStatus));            
+
+        SBTTestTunnelInstanceSwizzle(self.class, @selector(authorizationStatus), @selector(swz_authorizationStatus));
         #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
             SBTTestTunnelInstanceSwizzle(self.class, @selector(accuracyAuthorization), @selector(swz_accuracyAuthorization));
         #endif
-            
+
         SBTTestTunnelClassSwizzle(self, @selector(authorizationStatus), @selector(swz_authorizationStatus));
         SBTTestTunnelClassSwizzle(self, @selector(locationServicesEnabled), @selector(swz_locationServicesEnabled));
     });
@@ -166,7 +166,7 @@ static NSString *_serviceStatus;
 {
     [_instanceHashTable removeAllObjects];
     [_delegatesHashTable removeAllObjects];
-    
+
     // Repeat swizzle to restore default implementation
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -180,7 +180,7 @@ static NSString *_serviceStatus;
         SBTTestTunnelInstanceSwizzle(self.class, @selector(requestAlwaysAuthorization), @selector(swz_requestAlwaysAuthorization));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(requestWhenInUseAuthorization), @selector(swz_requestWhenInUseAuthorization));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(setDelegate:), @selector(swz_setDelegate:));
-        
+
         SBTTestTunnelInstanceSwizzle(self.class, @selector(authorizationStatus), @selector(swz_authorizationStatus));
         #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 140000
             SBTTestTunnelInstanceSwizzle(self.class, @selector(accuracyAuthorization), @selector(swz_accuracyAuthorization));

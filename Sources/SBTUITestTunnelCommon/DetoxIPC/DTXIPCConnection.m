@@ -14,14 +14,14 @@
 
 #if ENABLE_UITUNNEL
 
-#import "DTXIPCConnection-Private.h"
-#import "NSConnection.h"
-#import "NSPortNameServer.h"
-#import "ObjCRuntime.h"
-#import "_DTXIPCDistantObject.h"
-#import "_DTXIPCExportedObject.h"
-#import "_DTXIPCRemoteBlockRegistry.h"
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCConnection-Private.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/NSConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/NSPortNameServer.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/ObjCRuntime.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCDistantObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCExportedObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/_DTXIPCRemoteBlockRegistry.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 @import ObjectiveC;
 
 NSErrorDomain const DTXIPCErrorDomain = @"DTXIPCErrorDomain";

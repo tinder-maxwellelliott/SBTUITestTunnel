@@ -1,0 +1,101 @@
+load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
+
+objc_library(
+    name = "SBTUITestTunnelServer",
+    module_name = "SBTUITestTunnelServer",
+    hdrs = glob([
+        "Sources/SBTUITestTunnelServer/include/*.h",
+    ], allow_empty = False),
+    srcs = glob([
+        "Sources/SBTUITestTunnelServer/private/*.h",
+        "Sources/SBTUITestTunnelServer/private/*.m",
+        "Sources/SBTUITestTunnelServer/*.m",
+    ], allow_empty = False),
+    deps = [
+        ":SBTUITestTunnelCommon",
+        ":SBTUITestTunnelCommonSwift",
+        "@com_github_subito_it_gcdwebserver//:GCDWebServer"
+    ],
+    copts = [
+        "-Wno-unused-property-ivar",
+        "-Wno-deprecated-declarations"
+    ],
+    defines = ["SPM"],
+    enable_modules = True,
+    visibility = ["//visibility:public"]
+)
+
+objc_library(
+    name = "SBTUITestTunnelCommonNoARC",
+    hdrs = glob(
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.h",
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.h",
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/**/*.h",
+        ],
+        allow_empty = False,
+    ),
+    copts = [
+        "-Wno-objc-method-access",
+        "-Wno-deprecated-declarations",
+    ],
+    defines = ["SPM"],
+    enable_modules = True,
+    module_name = "SBTUITestTunnelCommonNoARC",
+    non_arc_srcs = glob(
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.m",
+        ],
+        allow_empty = False,
+    ),
+)
+
+objc_library(
+    name = "SBTUITestTunnelCommon",
+    hdrs = glob(
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.h",
+            "Sources/SBTUITestTunnelCommon/include/*.h",
+        ],
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.h",
+        ],
+        allow_empty = False,
+    ),
+    copts = [
+        "-Wno-objc-missing-super-calls",
+        "-Wno-unused-variable",
+    ],
+    defines = ["SPM"],
+    enable_modules = True,
+    module_name = "SBTUITestTunnelCommon",
+    srcs = glob(
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.m",
+            "Sources/SBTUITestTunnelCommon/*.m",
+            "Sources/SBTUITestTunnelCommon/private/*.h",
+        ],
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.m",
+        ],
+        allow_empty = False,
+    ),
+    deps = [
+        ":SBTUITestTunnelCommonNoARC",
+    ],
+)
+
+swift_library(
+    name = "SBTUITestTunnelCommonSwift",
+    srcs = glob(
+        [
+            "Sources/SBTUITestTunnelCommonSwift/*.swift",
+        ],
+        allow_empty = False,
+    ),
+    defines = ["SWIFT_PACKAGE"],
+    module_name = "SBTUITestTunnelCommonSwift",
+    deps = [
+        ":SBTUITestTunnelCommon",
+    ],
+)

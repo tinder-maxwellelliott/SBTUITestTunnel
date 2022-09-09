@@ -25,8 +25,8 @@
 @import Foundation;
 
 // These imports are required for SPM as this file will be the umbrella header
-#import "UIViewController+SBTUITestTunnel.h"
-#import "SBTAnyViewControllerPreviewing.h"
+#import "Sources/SBTUITestTunnelServer/include/UIViewController+SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelServer/include/SBTAnyViewControllerPreviewing.h"
 
 @interface SBTUITestTunnelServer : NSObject
 

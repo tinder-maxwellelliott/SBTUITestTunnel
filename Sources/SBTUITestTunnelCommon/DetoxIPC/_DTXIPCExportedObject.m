@@ -14,8 +14,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "_DTXIPCExportedObject.h"
-#import "NSInvocation+DTXRemoteSerialization.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCExportedObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/NSInvocation+DTXRemoteSerialization.h"
 
 @implementation _DTXIPCExportedObject
 {

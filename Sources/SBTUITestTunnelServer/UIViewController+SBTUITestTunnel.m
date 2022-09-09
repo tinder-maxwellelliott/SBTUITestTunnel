@@ -22,9 +22,8 @@
 
 #if ENABLE_UITUNNEL
 
-@import SBTUITestTunnelCommon;
-
-#import "UIViewController+SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/include/UIViewController+SBTUITestTunnel.h"
 
 @interface SBTUIViewControllerPreviewingGroup : NSObject
 
@@ -44,7 +43,7 @@ static NSMapTable<UIView *, id<UIViewControllerPreviewingDelegate>> *previewingD
             return registeredView;
         }
     }
-    
+
     return nil;
 }
 
@@ -56,13 +55,13 @@ static NSMapTable<UIView *, id<UIViewControllerPreviewingDelegate>> *previewingD
 - (id<UIViewControllerPreviewing>)swz_registerForPreviewingWithDelegate:(id<UIViewControllerPreviewingDelegate>)delegate sourceView:(UIView *)sourceView;
 {
     id<UIViewControllerPreviewing> ret = [self swz_registerForPreviewingWithDelegate:delegate sourceView:sourceView];
-    
+
     if (previewingDelegates == nil) {
         previewingDelegates = [NSMapTable weakToWeakObjectsMapTable];
     }
-    
+
     [previewingDelegates setObject:delegate forKey:sourceView];
-    
+
     return ret;
 }
 

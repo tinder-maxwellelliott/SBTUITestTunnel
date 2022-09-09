@@ -14,8 +14,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSArray+Utils.h"
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSArray+Utils.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 
 DTX_DIRECT_MEMBERS
 @implementation NSArray (Utils)

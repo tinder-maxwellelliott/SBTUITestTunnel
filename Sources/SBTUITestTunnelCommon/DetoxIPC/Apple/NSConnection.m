@@ -16,7 +16,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/NSConnection.h"
 
 #if !TARGET_OS_SIMULATOR
 

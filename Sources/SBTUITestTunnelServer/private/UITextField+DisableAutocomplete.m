@@ -15,16 +15,15 @@
 // limitations under the License.
 
 #if DEBUG
-    #ifndef ENABLE_UITUNNEL 
+    #ifndef ENABLE_UITUNNEL
         #define ENABLE_UITUNNEL 1
     #endif
 #endif
 
 #if ENABLE_UITUNNEL
 
-@import SBTUITestTunnelCommon;
-
-#import "UITextField+DisableAutocomplete.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/private/UITextField+DisableAutocomplete.h"
 
 @implementation UITextField (DisableAutocomplete)
 

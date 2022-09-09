@@ -14,8 +14,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSString+QuotedStringForJS.h"
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSString+QuotedStringForJS.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 
 DTX_DIRECT_MEMBERS
 @implementation NSString (DTXQuotedStringForJS)

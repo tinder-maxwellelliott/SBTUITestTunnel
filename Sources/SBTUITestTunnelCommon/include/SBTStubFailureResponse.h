@@ -16,7 +16,7 @@
 
 @import Foundation;
 
-#import "SBTStubResponse.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTStubResponse.h"
 
 @interface SBTStubFailureResponse: SBTStubResponse
 

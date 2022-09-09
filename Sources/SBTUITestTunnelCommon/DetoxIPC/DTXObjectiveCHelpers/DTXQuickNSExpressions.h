@@ -18,7 +18,7 @@
 #define DTXQuickNSExpressions_h
 
 #import <Foundation/Foundation.h>
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 
 static DTX_ALWAYS_INLINE NSExpression* DTXKeyPathExpression(NSString* keyPath)
 {

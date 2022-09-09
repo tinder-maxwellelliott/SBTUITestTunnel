@@ -14,7 +14,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "DTXIPCListener.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCListener.h"
 
 @implementation DTXIPCListener
 

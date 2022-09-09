@@ -26,8 +26,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "_DTXIPCRemoteBlockRegistry.h"
-#import "_DTXIPCDistantObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/_DTXIPCRemoteBlockRegistry.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCDistantObject.h"
 #import "../DTXObjectiveCHelpers/Swiftier.h"
 @import ObjectiveC;
 @import Darwin;

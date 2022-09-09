@@ -24,11 +24,11 @@
 
 @import SBTUITestTunnelCommon;
 
-#import "SBTUITestTunnelClientProtocol.h"
+#import "Sources/SBTUITestTunnelClient/include/SBTUITestTunnelClientProtocol.h"
 
 // These imports are required for SPM as this file will be the umbrella header
-#import "XCTestCase+AppExtension.h"
-#import "SBTUITunneledApplication.h"
+#import "Sources/SBTUITestTunnelClient/include/XCTestCase+AppExtension.h"
+#import "Sources/SBTUITestTunnelClient/include/SBTUITunneledApplication.h"
 
 typedef enum: NSUInteger {
     SBTUITestTunnelErrorLaunchFailed = 101,

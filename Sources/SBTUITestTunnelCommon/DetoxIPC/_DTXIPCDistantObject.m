@@ -14,13 +14,13 @@
 
 #if ENABLE_UITUNNEL
 
-#import "_DTXIPCDistantObject.h"
-#import "DTXIPCConnection.h"
-#import "DTXIPCConnection-Private.h"
-#import "NSConnection.h"
-#import "NSInvocation+DTXRemoteSerialization.h"
-#import "_DTXIPCExportedObject.h"
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCDistantObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCConnection-Private.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/NSConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/NSInvocation+DTXRemoteSerialization.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCExportedObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 @import ObjectiveC;
 @import Darwin;
 

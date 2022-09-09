@@ -14,8 +14,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSObject+AttachedObjects.h"
-#import "Swiftier.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSObject+AttachedObjects.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/Swiftier.h"
 
 @import ObjectiveC;
 

@@ -15,7 +15,7 @@
 #if ENABLE_UITUNNEL
 
 #import <Foundation/Foundation.h>
-#import "DTXIPCBase.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCBase.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

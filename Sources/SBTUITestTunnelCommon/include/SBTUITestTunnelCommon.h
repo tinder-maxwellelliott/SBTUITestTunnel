@@ -22,15 +22,15 @@
 
 #if ENABLE_UITUNNEL
 
-#import "SBTMonitoredNetworkRequest.h"
-#import "SBTRequestMatch.h"
-#import "SBTRewrite.h"
-#import "SBTRewriteReplacement.h"
-#import "SBTStubFailureResponse.h"
-#import "SBTStubResponse.h"
-#import "SBTSwizzleHelpers.h"
-#import "SBTUITestTunnel.h"
-#import "SBTIPCTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTMonitoredNetworkRequest.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRequestMatch.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRewrite.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRewriteReplacement.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTStubFailureResponse.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTStubResponse.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTIPCTunnel.h"
 
 #ifdef SPM
     #import "../DetoxIPC/DTXIPCConnection.h"

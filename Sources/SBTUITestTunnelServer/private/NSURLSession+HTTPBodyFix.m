@@ -15,16 +15,16 @@
 // limitations under the License.
 
 #if DEBUG
-    #ifndef ENABLE_UITUNNEL 
+    #ifndef ENABLE_UITUNNEL
         #define ENABLE_UITUNNEL 1
     #endif
 #endif
 
 #if ENABLE_UITUNNEL
 
-@import SBTUITestTunnelCommon;
-
-#import "NSURLSession+HTTPBodyFix.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/private/NSURLSession+HTTPBodyFix.h"
 
 @implementation NSURLSession (HTTPBodyFix)
 
@@ -33,7 +33,7 @@
     if ([request isKindOfClass:[NSMutableURLRequest class]] && bodyData) {
         [NSURLProtocol setProperty:bodyData forKey:SBTUITunneledNSURLProtocolHTTPBodyKey inRequest:(NSMutableURLRequest *)request];
     }
-    
+
     return [self swz_uploadTaskWithRequest:request fromData:bodyData];
 }
 
@@ -45,7 +45,7 @@
             [NSURLProtocol setProperty:bodyData forKey:SBTUITunneledNSURLProtocolHTTPBodyKey inRequest:(NSMutableURLRequest *)request];
         }
     }
-    
+
     return [self swz_uploadTaskWithRequest:request fromFile:fileURL];
 }
 
@@ -54,12 +54,12 @@
     if ([request isKindOfClass:[NSMutableURLRequest class]] && bodyData) {
         [NSURLProtocol setProperty:bodyData forKey:SBTUITunneledNSURLProtocolHTTPBodyKey inRequest:(NSMutableURLRequest *)request];
     }
-    
+
     return [self swz_uploadTaskWithRequest:request fromData:bodyData completionHandler:completionHandler];
 }
 
 - (NSURLSessionUploadTask *)swz_uploadTaskWithRequest:(NSURLRequest *)request fromFile:(NSURL *)fileURL completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
-{    
+{
     return [self uploadTaskWithRequest:request fromFile:fileURL completionHandler:completionHandler];
 }
 
@@ -68,7 +68,7 @@
     if ([request isKindOfClass:[NSMutableURLRequest class]] && request.HTTPBody) {
         [NSURLProtocol setProperty:request.HTTPBody forKey:SBTUITunneledNSURLProtocolHTTPBodyKey inRequest:(NSMutableURLRequest *)request];
     }
-    
+
     return [self swz_dataTaskWithRequest:request];
 }
 
@@ -77,7 +77,7 @@
     if ([request isKindOfClass:[NSMutableURLRequest class]] && request.HTTPBody) {
         [NSURLProtocol setProperty:request.HTTPBody forKey:SBTUITunneledNSURLProtocolHTTPBodyKey inRequest:(NSMutableURLRequest *)request];
     }
-    
+
     return [self swz_dataTaskWithRequest:request completionHandler:completionHandler];
 }
 
@@ -87,10 +87,10 @@
     dispatch_once(&onceToken, ^{
         SBTTestTunnelInstanceSwizzle(self.class, @selector(uploadTaskWithRequest:fromData:), @selector(swz_uploadTaskWithRequest:fromData:));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(uploadTaskWithRequest:fromFile:), @selector(swz_uploadTaskWithRequest:fromFile:));
-        
+
         SBTTestTunnelInstanceSwizzle(self.class, @selector(uploadTaskWithRequest:fromData:completionHandler:), @selector(swz_uploadTaskWithRequest:fromData:completionHandler:));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(uploadTaskWithRequest:fromFile:completionHandler:), @selector(swz_uploadTaskWithRequest:fromFile:completionHandler:));
-        
+
         SBTTestTunnelInstanceSwizzle(self.class, @selector(dataTaskWithRequest:), @selector(swz_dataTaskWithRequest:));
         SBTTestTunnelInstanceSwizzle(self.class, @selector(dataTaskWithRequest:completionHandler:), @selector(swz_dataTaskWithRequest:completionHandler:));
     });

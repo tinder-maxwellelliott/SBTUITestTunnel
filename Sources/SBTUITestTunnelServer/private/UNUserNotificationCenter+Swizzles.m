@@ -27,9 +27,9 @@
 #if ENABLE_UITUNNEL && ENABLE_UITUNNEL_SWIZZLING
 
 @import UserNotifications;
-@import SBTUITestTunnelCommon;
 
-#import "UNUserNotificationCenter+Swizzles.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/private/UNUserNotificationCenter+Swizzles.h"
 
 static NSString *_autorizationStatus;
 
@@ -54,7 +54,7 @@ static NSString *_autorizationStatus;
     UNNotificationSettings *settings = [UNNotificationSettings performSelector:sel];
 
     NSNumber *defaultNotificationSetting = @(UNNotificationSettingEnabled);
-    
+
     [settings setValue:@(status) forKey:@"authorizationStatus"];
     [settings setValue:defaultNotificationSetting forKey:@"soundSetting"];
     [settings setValue:defaultNotificationSetting forKey:@"badgeSetting"];
@@ -63,14 +63,14 @@ static NSString *_autorizationStatus;
     [settings setValue:defaultNotificationSetting forKey:@"lockScreenSetting"];
     [settings setValue:defaultNotificationSetting forKey:@"carPlaySetting"];
     [settings setValue:defaultNotificationSetting forKey:@"alertSetting"];
-    
+
     if (@available(iOS 11, macOS 10.14, *)) {
         [settings setValue:defaultNotificationSetting forKey:@"showPreviewsSetting"];
     }
 
     if (@available(iOS 13, *)) {
         [settings setValue:defaultNotificationSetting forKey:@"announcementSetting"];
-        [settings setValue:defaultNotificationSetting forKey:@"groupingSetting"];        
+        [settings setValue:defaultNotificationSetting forKey:@"groupingSetting"];
     }
 
     if (completionHandler != nil) {
@@ -81,7 +81,7 @@ static NSString *_autorizationStatus;
 + (void)loadSwizzlesWithAuthorizationStatus:(NSString *)autorizationStatus
 {
     _autorizationStatus = autorizationStatus;
-    
+
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         SBTTestTunnelInstanceSwizzle(self.class, @selector(requestAuthorizationWithOptions:completionHandler:), @selector(swz_requestAuthorizationWithOptions:completionHandler:));
@@ -90,7 +90,7 @@ static NSString *_autorizationStatus;
 }
 
 + (void)removeSwizzles
-{    
+{
     // Repeat swizzle to restore default implementation
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

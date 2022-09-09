@@ -14,7 +14,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "DTXIPCConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCConnection.h"
 
 @protocol _DTXIPCImpl <NSObject>
 

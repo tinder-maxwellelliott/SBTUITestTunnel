@@ -17,17 +17,16 @@
 // https://github.com/AliSoftware/OHHTTPStubs/blob/master/OHHTTPStubs/Sources/NSURLSession/OHHTTPStubs%2BNSURLSessionConfiguration.m
 
 #if DEBUG
-    #ifndef ENABLE_UITUNNEL 
+    #ifndef ENABLE_UITUNNEL
         #define ENABLE_UITUNNEL 1
     #endif
 #endif
 
 #if ENABLE_UITUNNEL
 
-@import SBTUITestTunnelCommon;
-
-#import "NSURLSessionConfiguration+SBTUITestTunnel.h"
-#import "SBTProxyURLProtocol.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelServer/private/NSURLSessionConfiguration+SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelServer/private/SBTProxyURLProtocol.h"
 
 @implementation NSURLSessionConfiguration (SBTUITestTunnel)
 
@@ -35,7 +34,7 @@
 {
     NSURLSessionConfiguration *config = [self swz_defaultSessionConfiguration];
     [self addSBTProxyProtocol:config];
-    
+
     return config;
 }
 
@@ -43,7 +42,7 @@
 {
     NSURLSessionConfiguration *config = [self swz_ephemeralSessionConfiguration];
     [self addSBTProxyProtocol:config];
-    
+
     return config;
 }
 

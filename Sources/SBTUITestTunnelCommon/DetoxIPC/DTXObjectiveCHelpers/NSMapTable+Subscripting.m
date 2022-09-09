@@ -14,7 +14,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSMapTable+Subscripting.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSMapTable+Subscripting.h"
 
 @implementation NSMapTable (Subscripting)
 

@@ -14,7 +14,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSString+Trimming.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSString+Trimming.h"
 
 @implementation NSString (Trimming)
 

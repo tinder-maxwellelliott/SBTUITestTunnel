@@ -24,7 +24,7 @@
 
 @import UIKit;
 
-#import "UIView+Extensions.h"
+#import "Sources/SBTUITestTunnelServer/private/UIView+Extensions.h"
 
 @implementation UIView (Recursion)
 

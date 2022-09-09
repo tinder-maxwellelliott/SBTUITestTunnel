@@ -26,11 +26,11 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSInvocation+DTXRemoteSerialization.h"
-#import "_DTXIPCRemoteBlockRegistry.h"
-#import "DTXIPCConnection-Private.h"
-#import "NSConnection.h"
-#import "_DTXIPCDistantObject.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/NSInvocation+DTXRemoteSerialization.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/_DTXIPCRemoteBlockRegistry.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXIPCConnection-Private.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/Apple/NSConnection.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/_DTXIPCDistantObject.h"
 @import UIKit;
 @import ObjectiveC;
 

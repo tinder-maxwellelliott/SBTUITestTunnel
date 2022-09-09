@@ -14,7 +14,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "NSString+FileNames.h"
+#import "Sources/SBTUITestTunnelCommon/DetoxIPC/DTXObjectiveCHelpers/NSString+FileNames.h"
 
 @implementation NSString (FileNames)
 
