@@ -23,7 +23,7 @@
 #if ENABLE_UITUNNEL
 
 #import "include/SBTRequestMatch.h"
-#import "private/SBTRegularExpressionMatcher.h"
+#import "include/SBTRegularExpressionMatcher.h"
 
 @implementation NSDictionary (Matcher)
 
@@ -44,7 +44,7 @@
             return NO;
         }
     }
-    
+
     return YES;
 }
 
@@ -76,7 +76,7 @@
         self.requestHeaders = [decoder decodeObjectForKey:NSStringFromSelector(@selector(requestHeaders))];
         self.responseHeaders = [decoder decodeObjectForKey:NSStringFromSelector(@selector(responseHeaders))];
     }
-    
+
     return self;
 }
 
@@ -93,21 +93,21 @@
 - (id)copyWithZone:(NSZone *)zone;
 {
     SBTRequestMatch *copy = [SBTRequestMatch allocWithZone:zone];
-    
+
     copy.url = [self.url copy];
     copy.query = [self.query copy];
     copy.method = [self.method copy];
     copy.body = [self.body copy];
     copy.requestHeaders = [self.requestHeaders copy];
     copy.responseHeaders = [self.responseHeaders copy];
-    
+
     return copy;
 }
 
 - (NSString *)description
 {
     NSString *ret = [NSString stringWithFormat:@"URL: %@\nQuery: %@\nMethod: %@\nBody: %@\nRequest headers: %@\nResponse headers: %@", self.url ?: @"N/A", self.query ?: @"N/A", self.method ?: @"N/A", self.body ?: @"N/A", self.requestHeaders ?: @"N/A", self.responseHeaders ?: @"N/A"];
-    
+
     return ret;
 }
 
@@ -152,7 +152,7 @@
     if (request == nil) {
         return NO;
     }
-    
+
     if (self.method != nil && ![request.HTTPMethod isEqualToString:self.method]) {
         return NO;
     }
@@ -161,41 +161,41 @@
     // if (![self matchesRequestHeaders:request.allHTTPHeaderFields]) {
     //    return NO;
     // }
-    
+
     if (self.url != nil) {
         NSError *error;
         NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:self.url options:NSRegularExpressionCaseInsensitive error:&error];
         NSString *stringToMatch = request.URL.absoluteString;
         if (!error && stringToMatch != nil) {
             NSInteger matchCount = [regex numberOfMatchesInString:stringToMatch options:0 range:NSMakeRange(0, stringToMatch.length)];
-            
+
             if (matchCount == 0) {
                 return NO;
             }
         }
     }
-    
+
     NSURL *requestUrl = request.URL;
     if (self.query != nil && requestUrl != nil) {
         NSURLComponents *components = [[NSURLComponents alloc] initWithURL:requestUrl resolvingAgainstBaseURL:NO];
-        
+
         NSMutableString *queryString = [(components.query ?: @"") mutableCopy];
         [queryString insertString:@"&" atIndex:0]; // prepend & to allow always prepending `&` in SBTMatchRequest's queries
-        
+
         for (NSString *matchQuery in self.query) {
             SBTRegularExpressionMatcher *matcher = [[SBTRegularExpressionMatcher alloc] initWithRegularExpression:matchQuery];
-            
+
             if (![matcher matches:queryString]) {
                 return NO;
             }
         }
     }
-    
+
     if (self.body != nil) {
         SBTRegularExpressionMatcher *matcher = [[SBTRegularExpressionMatcher alloc] initWithRegularExpression:self.body];
-        
+
         NSString *requestBody = [[NSString alloc] initWithData:request.HTTPBody ?: [NSData data] encoding:NSUTF8StringEncoding];
-        
+
         if (![matcher matches:requestBody]) {
             return NO;
         }
@@ -209,7 +209,7 @@
     if (requestHeaders == nil || [self.requestHeaders count] == 0) {
         return YES;
     }
-    
+
     return [requestHeaders matchExpectedHeaders:self.requestHeaders];
 }
 
@@ -218,7 +218,7 @@
     if (responseHeaders == nil || [self.responseHeaders count] == 0) {
         return YES;
     }
-    
+
     return [responseHeaders matchExpectedHeaders:self.responseHeaders];
 }
 

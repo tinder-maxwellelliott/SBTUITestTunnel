@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "private/SBTRegularExpressionMatcher.h"
+#import "include/SBTRegularExpressionMatcher.h"
 
 @interface SBTRegularExpressionMatcher()
 
@@ -49,7 +49,7 @@
 - (BOOL)matches:(NSString *)query
 {
     NSUInteger regexMatches = [self.regex numberOfMatchesInString:query options:0 range:NSMakeRange(0, query.length)];
-    
+
     return self.invertMatch ? (regexMatches == 0) : (regexMatches > 0);
 }
 
