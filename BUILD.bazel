@@ -2,27 +2,33 @@ load("@build_bazel_rules_swift//swift:swift.bzl", "swift_library")
 
 objc_library(
     name = "SBTUITestTunnelServer",
-    module_name = "SBTUITestTunnelServer",
-    hdrs = glob([
-        "Sources/SBTUITestTunnelServer/include/*.h",
-    ], allow_empty = False),
-    srcs = glob([
-        "Sources/SBTUITestTunnelServer/private/*.h",
-        "Sources/SBTUITestTunnelServer/private/*.m",
-        "Sources/SBTUITestTunnelServer/*.m",
-    ], allow_empty = False),
-    deps = [
-        ":SBTUITestTunnelCommon",
-        ":SBTUITestTunnelCommonSwift",
-        "@com_github_subito_it_gcdwebserver//:GCDWebServer"
-    ],
+    srcs = glob(
+        [
+            "Sources/SBTUITestTunnelServer/private/*.h",
+            "Sources/SBTUITestTunnelServer/private/*.m",
+            "Sources/SBTUITestTunnelServer/*.m",
+        ],
+        allow_empty = False,
+    ),
+    hdrs = glob(
+        [
+            "Sources/SBTUITestTunnelServer/include/*.h",
+        ],
+        allow_empty = False,
+    ),
     copts = [
         "-Wno-unused-property-ivar",
-        "-Wno-deprecated-declarations"
+        "-Wno-deprecated-declarations",
     ],
     defines = ["SPM"],
     enable_modules = True,
-    visibility = ["//visibility:public"]
+    module_name = "SBTUITestTunnelServer",
+    visibility = ["//visibility:public"],
+    deps = [
+        ":SBTUITestTunnelCommon",
+        ":SBTUITestTunnelCommonSwift",
+        "@com_github_subito_it_gcdwebserver//:GCDWebServer",
+    ],
 )
 
 objc_library(
@@ -52,6 +58,17 @@ objc_library(
 
 objc_library(
     name = "SBTUITestTunnelCommon",
+    srcs = glob(
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.m",
+            "Sources/SBTUITestTunnelCommon/*.m",
+            "Sources/SBTUITestTunnelCommon/private/*.h",
+        ],
+        [
+            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.m",
+        ],
+        allow_empty = False,
+    ),
     hdrs = glob(
         [
             "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.h",
@@ -69,21 +86,11 @@ objc_library(
     defines = ["SPM"],
     enable_modules = True,
     module_name = "SBTUITestTunnelCommon",
-    srcs = glob(
-        [
-            "Sources/SBTUITestTunnelCommon/DetoxIPC/**/*.m",
-            "Sources/SBTUITestTunnelCommon/*.m",
-            "Sources/SBTUITestTunnelCommon/private/*.h",
-        ],
-        [
-            "Sources/SBTUITestTunnelCommon/DetoxIPC/fno-objc-arc/*.m",
-        ],
-        allow_empty = False,
-    ),
+    visibility = ["//visibility:public"],
     deps = [
         ":SBTUITestTunnelCommonNoARC",
     ],
-    visibility = ["//visibility:public"]
+    alwayslink = True,
 )
 
 swift_library(
