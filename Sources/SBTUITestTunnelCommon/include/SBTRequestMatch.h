@@ -53,7 +53,7 @@
                      requestHeaders:(nullable NSDictionary<NSString *, NSString *> *)requestHeaders
                     responseHeaders:(nullable NSDictionary<NSString *, NSString *> *)responseHeaders NS_SWIFT_NAME(init(_url:_query:_method:_body:_requestHeaders:_responseHeaders:));
 
-- (BOOL)matchesURLRequest:(nullable NSURLRequest *)request;
+- (BOOL)matchesURLRequest:(nullable NSURLRequest *)request NS_SWIFT_NAME(matches(urlRequest:));
 
 - (BOOL)matchesRequestHeaders:(nullable NSDictionary<NSString *, NSString *> *)requestHeaders;
 
