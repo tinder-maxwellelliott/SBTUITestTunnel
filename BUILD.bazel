@@ -83,6 +83,7 @@ objc_library(
     deps = [
         ":SBTUITestTunnelCommonNoARC",
     ],
+    visibility = ["//visibility:public"]
 )
 
 swift_library(
