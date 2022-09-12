@@ -22,8 +22,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTUITunneledApplication.h"
-#import "include/SBTUITestTunnelClient.h"
+#import "Sources/SBTUITestTunnelClient/include/SBTUITunneledApplication.h"
+#import "Sources/SBTUITestTunnelClient/include/SBTUITestTunnelClient.h"
 
 @interface SBTUITunneledApplication () <SBTUITestTunnelClientDelegate>
 @property (nonatomic, strong) SBTUITestTunnelClient *client;

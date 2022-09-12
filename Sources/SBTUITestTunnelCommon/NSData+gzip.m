@@ -12,7 +12,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "private/NSData+gzip.h"
+#import "Sources/SBTUITestTunnelCommon/private/NSData+gzip.h"
 #include <zlib.h>
 
 @implementation NSData (gzip)

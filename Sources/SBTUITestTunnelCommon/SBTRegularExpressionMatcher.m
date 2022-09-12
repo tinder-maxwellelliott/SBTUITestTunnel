@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTRegularExpressionMatcher.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRegularExpressionMatcher.h"
 
 @interface SBTRegularExpressionMatcher()
 

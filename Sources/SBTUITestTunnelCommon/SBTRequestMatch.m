@@ -22,8 +22,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTRequestMatch.h"
-#import "include/SBTRegularExpressionMatcher.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRequestMatch.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRegularExpressionMatcher.h"
 
 @implementation NSDictionary (Matcher)
 

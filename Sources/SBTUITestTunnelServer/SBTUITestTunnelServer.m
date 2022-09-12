@@ -34,14 +34,14 @@
 @import CoreLocation;
 @import UserNotifications;
 
-#import "include/SBTUITestTunnelServer.h"
-#import "include/SBTAnyViewControllerPreviewing.h"
-#import "include/UIViewController+SBTUITestTunnel.h"
-#import "private/CLLocationManager+Swizzles.h"
-#import "private/UNUserNotificationCenter+Swizzles.h"
-#import "private/UITextField+DisableAutocomplete.h"
-#import "private/SBTProxyURLProtocol.h"
-#import "private/UIView+Extensions.h"
+#import "Sources/SBTUITestTunnelServer/include/SBTUITestTunnelServer.h"
+#import "Sources/SBTUITestTunnelServer/include/SBTAnyViewControllerPreviewing.h"
+#import "Sources/SBTUITestTunnelServer/include/UIViewController+SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelServer/private/CLLocationManager+Swizzles.h"
+#import "Sources/SBTUITestTunnelServer/private/UNUserNotificationCenter+Swizzles.h"
+#import "Sources/SBTUITestTunnelServer/private/UITextField+DisableAutocomplete.h"
+#import "Sources/SBTUITestTunnelServer/private/SBTProxyURLProtocol.h"
+#import "Sources/SBTUITestTunnelServer/private/UIView+Extensions.h"
 
 #if !defined(NS_BLOCK_ASSERTIONS)
 

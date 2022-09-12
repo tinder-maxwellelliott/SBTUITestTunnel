@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTAnyViewControllerPreviewing.h"
+#import "Sources/SBTUITestTunnelServer/include/SBTAnyViewControllerPreviewing.h"
 
 @interface SBTAnyViewControllerPreviewing()
 

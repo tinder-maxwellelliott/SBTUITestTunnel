@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTStubResponse.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTStubResponse.h"
 
 NSString * const SBTResponseContentTypeJson = @"application/json";
 NSString * const SBTResponseContentTypeXml = @"application/xml";

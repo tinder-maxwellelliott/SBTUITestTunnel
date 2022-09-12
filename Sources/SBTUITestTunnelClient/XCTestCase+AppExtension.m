@@ -26,8 +26,8 @@
 
 #if ENABLE_UITUNNEL && ENABLE_UITUNNEL_SWIZZLING
 
-#import "include/XCTestCase+AppExtension.h"
-#import "include/SBTUITunneledApplication.h"
+#import "Sources/SBTUITestTunnelClient/include/XCTestCase+AppExtension.h"
+#import "Sources/SBTUITestTunnelClient/include/SBTUITunneledApplication.h"
 #import <objc/runtime.h>
 
 @implementation XCTestCase (AppExtension)

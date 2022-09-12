@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTUITestTunnel.h"
 
 NSString * const SBTUITunneledApplicationLaunchEnvironmentIPCKey = @"SBTUITunneledApplicationLaunchEnvironmentIPCKey";
 NSString * const SBTUITunneledApplicationLaunchEnvironmentPortKey = @"SBTUITunneledApplicationLaunchEnvironmentPortKey";

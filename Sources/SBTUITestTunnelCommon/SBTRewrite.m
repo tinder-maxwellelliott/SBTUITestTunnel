@@ -22,8 +22,8 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTRewrite.h"
-#import "include/SBTRewriteReplacement.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRewrite.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRewriteReplacement.h"
 
 @implementation SBTRewrite : NSObject
 

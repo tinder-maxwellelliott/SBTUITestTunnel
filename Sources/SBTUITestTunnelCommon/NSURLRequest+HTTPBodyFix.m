@@ -22,9 +22,9 @@
 
 #if ENABLE_UITUNNEL
 
-#import "private/NSURLRequest+HTTPBodyFix.h"
-#import "include/SBTUITestTunnel.h"
-#import "include/SBTSwizzleHelpers.h"
+#import "Sources/SBTUITestTunnelCommon/private/NSURLRequest+HTTPBodyFix.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTUITestTunnel.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTSwizzleHelpers.h"
 
 @implementation NSURLRequest (HTTPBodyFix)
 

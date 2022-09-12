@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTRewriteReplacement.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTRewriteReplacement.h"
 
 @interface SBTRewriteReplacement ()
 

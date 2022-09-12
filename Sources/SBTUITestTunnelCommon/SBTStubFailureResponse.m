@@ -22,7 +22,7 @@
 
 #if ENABLE_UITUNNEL
 
-#import "include/SBTStubFailureResponse.h"
+#import "Sources/SBTUITestTunnelCommon/include/SBTStubFailureResponse.h"
 
 @implementation SBTStubFailureResponse
 
